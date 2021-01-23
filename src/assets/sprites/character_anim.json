@@ -1,0 +1,224 @@
+{
+    "anims": [
+        {
+            "key": "hit_right",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 11,
+            "frames": [
+                {
+                    "key": "character",
+                    "frame": "tile036"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile037"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile038"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile039"
+                }
+            ]
+        },
+        {
+            "key": "hit_down",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 11,
+            "frames": [
+                {
+                    "key": "character",
+                    "frame": "tile032"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile033"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile034"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile035"
+                }
+            ]
+        },
+        {
+            "key": "strike_up",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 11,
+            "frames": [
+                {
+                    "key": "character",
+                    "frame": "tile028"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile029"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile030"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile031"
+                }
+            ]
+        },
+        {
+            "key": "strike_left",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 11,
+            "frames": [
+                {
+                    "key": "character",
+                    "frame": "tile025"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile026"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile027"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile028"
+                }
+            ]
+        },
+        {
+            "key": "strike_down",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 11,
+            "frames": [
+                {
+                    "key": "character",
+                    "frame": "tile020"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile021"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile022"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile023"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile024"
+                }
+            ]
+        },
+        {
+            "key": "walk_up",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "character",
+                    "frame": "tile016"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile017"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile018"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile019"
+                }
+            ]
+        },
+        {
+            "key": "walk_right",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "character",
+                    "frame": "tile012"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile013"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile014"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile015"
+                }
+            ]
+        },
+        {
+            "key": "walk_down",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "character",
+                    "frame": "tile008"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile009"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile010"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile011"
+                }
+            ]
+        },
+        {
+            "key": "idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 5,
+            "frames": [
+                {
+                    "key": "character",
+                    "frame": "tile000"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile001"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile002"
+                },
+                {
+                    "key": "character",
+                    "frame": "tile001"
+                }
+            ]
+        }
+    ]
+}
