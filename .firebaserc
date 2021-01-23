@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "connoisseur-c38b8"
+  },
+  "targets": {
+    "connoisseur-c38b8": {
+      "hosting": {
+        "connoisseur-c38b8": [
+          "connoisseur-c38b8"
+        ]
+      }
+    }
+  }
+}

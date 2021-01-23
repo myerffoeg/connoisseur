@@ -1,0 +1,43 @@
+language: node_js
+
+sudo: false
+
+dist: trusty
+
+node_js:
+  - "12"
+
+addons:
+  chrome: stable
+  sonarcloud:
+    organization: "myerffoeg"
+    token:
+      secure: "LUdfA9WZVIzhRVhUDeZjvT1+dKI4WBvVNrcYatoPFmBVLL2I+2IizkqAlEHxPR4KaL+hCYZGI1JFvEVlezrYloh83CgkjCnjvGzKH8flP93gS0NLEcmiVEx9nvM4i+XxXctAyhVjhcetTLcjHjj3hVZskB2n26HgAGIlY43LViOjgEzoj5BynvrShfiQzSz/fbWHI5cN1geVFJbOqyTOMOP0aLf3U8XgWAC4X2YA2aE88N6rJnnB0/wTneNI/n8YI3nu41/x3XPPVQdN4ZAH84p9DYAhfcR//6YmDGwkMlMiZdVAgBZpyPfpSDaWaGiyHoisQhv4dplOGe3gP5wY1iAVSa+8W3WEVYmFwjno2FpPfxvhrC9LGc2mEYrUvVU530Qv8R+sYEKlQaCk2hdxDMoJiAIw+DUawCO04YDa883JBbC5aTPyokF/gj4oZs+AQaqxlrl1O84tHo8JVSxA8yLylR0zrg9YtlRQ+3yVJAItPFqwikkDchFy6SxbqQdO/Dz6EpxxQ9oX65Og89aVUnAy0RNIK+oMxa7jfTa7x2lqf5pXt9PVlGhL23WGk+t3UNag2by43qJrDa0eFOxCbDlowJ04ZJZYao9AVBzmdAhlVlSWmr/mhDt/jG7nWPAIbV9+WYT6c2Z4vFwDGT+3C2i2PuZP80uJB5kIRGt+f54="
+
+before_install:
+  - npm install -g npm@latest
+
+install:
+  - npm install
+
+jobs:
+  include:
+    - stage: "Linting & Tests & Sonarcloud analysis"
+      name: "Linting & Tests & Sonarcloud analysis"
+      script:
+        - ng lint
+        # - ng test --watch=false --browsers=ChromeHeadless --codeCoverage
+        - sonar-scanner
+    - stage: "Building & deploying on Firebase"
+      name: "Building & deploying on Firebase"
+      if: branch = master
+      script:
+        - ng build --aot --prod --build-optimizer
+      deploy:
+        provider: firebase
+        token:
+          secure: "Ye1joYAZvwYn062y/2NDWcU3YJgSqs8c/zP8OlgCErtyd4HwkBGu6Wff6oEOCuXq4O1OkEgPrl7X5kk8CHG0RYUhl7MRahd/+Ukd/zha/aP7sGlBlP6C86fBSI5yaAEwLi+pL2jfOxXFQjG6H6MdPDtv8qG6i6QM8SJPaLzYUnJeL4pBG/nunQVCuE7R3HPSIA9k1li5SFlzvsyoZYqfyV257Gc9DEk3QNBHpzuh0qJiBE08BQScGPXp1TnhnZ4vBYZRJ6RU+xgDHLkO5iL2g5BTlCmlp5UEJGNCW2jvy1vuUvdzpPli2HOZe++fajHoh0BoOZkaQq1nNSUbzMsYDjsUWeAkzc8qaYU2Y4swD/x0+BNBD8SCOeV4WbWHekKfRmu0FqrUw59wDOeJa0Z+08ehVeSxlHOpjdPuOzZX+c42sCUc6cm7xQtAxP0hY7fUk+B2j1ht8zAgruNJfTQyTisF5apbf2exC4h0mWFWV33cSgCfoTVykI5qO9zVcYpGvEOYY6mLiqcN167ibK478guCuCwX9Tu433gM+rhe/3EnIEWCbnRTT40gUGfh85obJH3JBQMkEvwjIl4gUtEk5H+ml8fr5AMGUgKxk3GyKXBkdX6BcoMZqVoNMoRcQlNrb4CZesrTHZopnaYkDgLjMUsQfSl0VQRL7iJCJaZ2Ins="
+        skip_cleanup: true
+
+git:
+  depth: 1
