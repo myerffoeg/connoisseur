@@ -2,12 +2,10 @@ language: node_js
 
 sudo: false
 
-dist: trusty
+dist: xenial
 
 node_js:
   - "12"
-
-jdk: openjdk11
 
 addons:
   chrome: stable
