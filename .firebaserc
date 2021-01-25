@@ -5,7 +5,7 @@
   "targets": {
     "connoisseur-c38b8": {
       "hosting": {
-        "connoisseur-c38b8": [
+        "connoisseur": [
           "connoisseur-c38b8"
         ]
       }
