@@ -1,5 +1,6 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ConnoisseurService } from './@core/services';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
