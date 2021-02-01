@@ -29,10 +29,7 @@ export class Player extends Container {
 
     create(): void {
         this.scene.add.existing(this);
-        this.scene.cameras.main.setBounds(0, 0, 1024 * 2, 1024 * 2);
-        this.scene.cameras.main.startFollow(this, false);
-        this.scene.cameras.main.setZoom(4);
-        this.scene.cameras.main.flash(2500, 20, 11, 40);
+        this.scene.cameras.main.setBounds(0, 0, 512 * 2, 512 * 2).startFollow(this, false).setZoom(4).flash(2500, 20, 11, 40);
 
         this.scene.scene.launch(InterfaceScene.name);
 

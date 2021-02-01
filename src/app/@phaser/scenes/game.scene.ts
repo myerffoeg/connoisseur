@@ -29,7 +29,7 @@ export class GameScene extends Scene implements Create, Update {
             );
         });
 
-        this.physics.world.bounds.setTo(0, 0, 1024 * 2, 1024 * 2);
+        this.physics.world.bounds.setTo(0, 0, 512 * 2, 512 * 2);
     }
 
     update(): void {
