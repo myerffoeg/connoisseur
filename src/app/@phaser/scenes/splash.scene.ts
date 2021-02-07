@@ -1,6 +1,6 @@
 
 import { Create, Preload } from '../interfaces';
-import { MonsterManager, PlayerManager } from '../managers';
+import { PlayerManager } from '../managers';
 import { GameScene } from './game.scene';
 import { Scene } from './scene';
 
@@ -45,7 +45,6 @@ export class SplashScene extends Scene implements Preload, Create {
         this.load.tilemapTiledJSON('connoisseur', 'assets/scenes/connoisseur.json');
 
         PlayerManager.preload(this);
-        MonsterManager.preload(this);
     }
 
     /**

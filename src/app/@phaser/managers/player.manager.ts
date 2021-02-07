@@ -12,9 +12,9 @@ export class PlayerManager {
     static create(scene: Phaser.Scene): void {
         PlayerManager.player = new Player(
             scene,
-            'character',
             50,
-            50
+            50,
+            'character'
         );
         PlayerManager.player.create();
     }

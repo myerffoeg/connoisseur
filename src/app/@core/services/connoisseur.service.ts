@@ -29,14 +29,14 @@ export class ConnoisseurService {
     },
     backgroundColor: '#140B28',
     physics: {
-      default: 'arcade',
-      arcade: {
+      default: 'matter',
+      matter: {
         gravity: {
           x: 0,
           y: 0
         },
         debug: !environment.production
-      }
+      },
     },
     scale: {
       width: '100%',

@@ -1,35 +1,40 @@
+import { Sprite } from '.';
 import { InterfaceScene } from '../scenes';
-import { Container } from './container';
 
 /**
  * A Player represent the current playing player on the map.
  */
-export class Player extends Container {
+export class Player extends Sprite {
 
-    static readonly PLAYER_SPEED = 80;
-    static readonly PLAYER_SPRINT_SPEED = 100;
-
-    character: Phaser.Physics.Arcade.Sprite;
+    static readonly PLAYER_SPEED = 0.75;
+    static readonly PLAYER_SPRINT_SPEED = 0.85;
 
     // @todo move inputs somewhere else?
     inputs: any;
 
-    constructor(scene: Phaser.Scene, texture: string, x?: number, y?: number, children?: Phaser.GameObjects.GameObject[]) {
-        super(scene, x, y, children);
+    constructor(scene: Phaser.Scene, x: number, y: number, texture: string) {
+        super(scene, x, y, texture);
 
-        this.character = (new Phaser.Physics.Arcade.Sprite(scene, 32, 32, texture));
-        this.add([
-            this.character
-        ]);
-        this.setDepth(1);
-
-        this.body.setSize(12, 4).setOffset(26, 30);
-        this.body.setImmovable(true).setCollideWorldBounds(true).setAllowRotation(false);
+        this.scene.add.existing(this);
+        this.setExistingBody(
+            this.scene.matter.body.create({
+                parts: [
+                    this.scene.matter.bodies.rectangle(this.x, this.y, 12, 6, {
+                        isSensor: false,
+                        label: 'collides'
+                    }),
+                    this.scene.matter.bodies.rectangle(this.x, this.y, 34, 34, {
+                        isSensor: true,
+                        label: 'interact'
+                    })
+                ],
+            })
+        );
+        this.setDepth(3).setFixedRotation().setIgnoreGravity(true);
     }
 
     create(): void {
-        this.scene.add.existing(this);
-        this.scene.cameras.main.setBounds(0, 0, 512 * 2, 512 * 2).startFollow(this, false).setZoom(4).flash(2500, 20, 11, 40);
+        this.scene.cameras.main.setBounds(0, 0, 512 * 2, 512 * 2).startFollow(this, false, 0.05, 0.05).setZoom(4).flash(2500, 20, 11, 40);
 
         this.scene.scene.launch(InterfaceScene.name);
 
@@ -58,36 +63,36 @@ export class Player extends Container {
             velociy.y = -1;
         }
 
-        this.character.flipX = false;
+        this.flipX = false;
         if (this.inputs.SPACE.isDown) {
             if (velociy.y < 0) {
-                this.character.anims.play('strike_up', true);
+                this.anims.play('strike_up', true);
             } else if (velociy.y > 0) {
-                this.character.anims.play('strike_down', true);
+                this.anims.play('strike_down', true);
             } else if (velociy.x < 0) {
-                this.character.flipX = true;
-                this.character.anims.play('strike_left', true);
+                this.flipX = true;
+                this.anims.play('strike_left', true);
             } else if (velociy.x > 0) {
-                this.character.anims.play('strike_left', true);
+                this.anims.play('strike_left', true);
             } else {
-                this.character.anims.play('strike_down', true);
+                this.anims.play('strike_down', true);
             }
-            this.body.setVelocity(0, 0);
+            this.setVelocity(0, 0);
         } else {
             if (velociy.y < 0) {
-                this.character.anims.play('walk_up', true);
+                this.anims.play('walk_up', true);
             } else if (velociy.y > 0) {
-                this.character.anims.play('walk_down', true);
+                this.anims.play('walk_down', true);
             } else if (velociy.x < 0) {
-                this.character.flipX = true;
-                this.character.anims.play('walk_right', true);
+                this.flipX = true;
+                this.anims.play('walk_right', true);
             } else if (velociy.x > 0) {
-                this.character.anims.play('walk_right', true);
+                this.anims.play('walk_right', true);
             } else {
-                this.character.anims.play('idle', true);
+                this.anims.play('idle', true);
             }
             velociy.normalize().scale(this.inputs.SHIFT.isDown ? Player.PLAYER_SPRINT_SPEED : Player.PLAYER_SPEED);
-            this.body.setVelocity(velociy.x, velociy.y);
+            this.setVelocity(velociy.x, velociy.y);
         }
     }
 }
