@@ -7,7 +7,7 @@ import { InterfaceScene } from '../scenes';
 export class Player extends Sprite {
 
     static readonly PLAYER_SPEED = 0.75;
-    static readonly PLAYER_SPRINT_SPEED = 0.85;
+    static readonly PLAYER_SPRINT_SPEED = 1;
 
     // @todo move inputs somewhere else?
     inputs: any;
@@ -23,7 +23,7 @@ export class Player extends Sprite {
                         isSensor: false,
                         label: 'collides'
                     }),
-                    this.scene.matter.bodies.rectangle(this.x, this.y, 34, 34, {
+                    this.scene.matter.bodies.rectangle(this.x, this.y, 38, 38, {
                         isSensor: true,
                         label: 'interact'
                     })
@@ -34,9 +34,12 @@ export class Player extends Sprite {
     }
 
     create(): void {
-        this.scene.cameras.main.setBounds(0, 0, 512 * 2, 512 * 2).startFollow(this, false, 0.05, 0.05).setZoom(4).flash(2500, 20, 11, 40);
-
         this.scene.scene.launch(InterfaceScene.name);
+
+        this.scene.cameras.main.setBounds(0, 0, 512 * 2, 512 * 2)
+            .startFollow(this, false, 0.04, 0.04)
+            .setZoom(3.75)
+            .flash(2500, 20, 11, 40);
 
         this.inputs = this.scene.input.keyboard.addKeys({
             Z: Phaser.Input.Keyboard.KeyCodes.Z,

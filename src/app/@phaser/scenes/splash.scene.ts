@@ -58,7 +58,7 @@ export class SplashScene extends Scene implements Preload, Create {
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 this.scene.stop();
-                this.scene.run(GameScene.name);
+                this.scene.switch(GameScene.name);
             },
         });
     }

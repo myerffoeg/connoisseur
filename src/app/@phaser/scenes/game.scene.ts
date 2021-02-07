@@ -25,6 +25,7 @@ export class GameScene extends Scene implements Create, Update {
                 GameScene.map
                     .createLayer(layer.name, GameScene.tiles, 0, 0)
                     .setCollisionByProperty({ collides: true })
+                    .setCollisionFromCollisionGroup()
                     .setDepth(index)
             );
         });

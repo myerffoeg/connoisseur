@@ -28,6 +28,6 @@ export class SplashingScene extends Scene implements Preload, Create {
      */
     create(): void {
         this.scene.stop();
-        this.scene.run(SplashScene.name);
+        this.scene.switch(SplashScene.name);
     }
 }
