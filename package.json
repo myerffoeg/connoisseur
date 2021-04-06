@@ -29,7 +29,7 @@
     "@angular/service-worker": "~10.2.0",
     "phaser": "^3.52.0",
     "rxjs": "~6.6.0",
-    "tslib": "^2.0.0",
+    "tslib": "^2.2.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
