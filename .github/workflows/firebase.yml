@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: "14.x"
-      - name: "Dependancy installation..."
+      - name: "Dependency installation..."
         run: npm install
       - name: "Linting..."
         run: npm run ng lint
