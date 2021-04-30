@@ -6,6 +6,7 @@ import { SplashScene } from './splash.scene';
 
 /**
  * Splashing scene is the splash screen preloading its assets before showing the splash screen to the user.
+ * This is not the real splash screen.
  */
 export class SplashingScene extends Scene implements Preload, Create {
 
