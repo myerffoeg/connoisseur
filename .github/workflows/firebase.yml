@@ -1,0 +1,32 @@
+name: firebase
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: "14.x"
+      - name: "Dependency installation..."
+        run: npm install
+      - name: "Linting..."
+        run: npm run ng lint
+      - name: "SonarCloud Scan..."
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: "Building..."
+        run: npm run ng build --aot --prod --build-optimizer
+      - name: "Deploying to Firebase..."
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
