@@ -48,7 +48,7 @@ export class Player extends Sprite {
 
     this.scene.cameras.main.setBounds(0, 0, 512 * 2, 512 * 2);
     this.scene.cameras.main.startFollow(this, false, 0.04, 0.04);
-    this.scene.cameras.main.setZoom(3.75)
+    this.scene.cameras.main.setZoom(3.75);
     this.scene.cameras.main.flash(2500, 20, 11, 40);
 
     this.inputs = this.scene.input.keyboard.addKeys({
