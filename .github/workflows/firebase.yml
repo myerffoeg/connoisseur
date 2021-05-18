@@ -23,7 +23,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: "Building..."
-        run: npm run ng build --aot --prod --build-optimizer
+        run: npm run ng build -- --aot --prod --build-optimizer
       - name: "Deploying to Firebase..."
         uses: w9jds/firebase-action@master
         with:
